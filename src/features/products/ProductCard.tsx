@@ -4,14 +4,25 @@ import { Link } from 'react-router-dom'
 type ProductCardProps = {
   product: Product
   onAddToCart: (productId: string) => void
+  priority?: boolean
 }
 
-function ProductCard({ product, onAddToCart }: ProductCardProps) {
+function ProductCard({ product, onAddToCart, priority = false }: ProductCardProps) {
   return (
     <article className="product-card">
       <Link className="product-image-link" to={`/products/${product.id}`} aria-label={`Voir ${product.name}`}>
         <div className="product-image-wrap">
-          {product.image && <img className="product-image" src={product.image} alt={product.name} />}
+          {product.image && (
+            <img
+              className="product-image"
+              src={product.image}
+              alt={product.name}
+              width={900}
+              height={682}
+              loading={priority ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          )}
           {product.badge && <span className="product-badge">{product.badge}</span>}
           {product.category && <span className="product-category">{product.category}</span>}
         </div>
