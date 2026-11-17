@@ -49,7 +49,16 @@ function ProductDetailPage({
           ) : (
             <article className="product-detail-card">
               <div className="product-image-wrap">
-                {product.image && <img className="product-image" src={product.image} alt={product.name} />}
+                {product.image && (
+                  <img
+                    className="product-image"
+                    src={product.image}
+                    alt={product.name}
+                    width={900}
+                    height={900}
+                    loading="lazy"
+                  />
+                )}
                 {product.badge && <span className="product-badge">{product.badge}</span>}
                 {product.category && <span className="product-category">{product.category}</span>}
               </div>
