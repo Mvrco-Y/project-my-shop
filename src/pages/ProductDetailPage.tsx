@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CartPanel from '@/components/CartPanel'
 import type { Cart, FetchResult, Product } from '@/types/ecommerce'
 
@@ -20,7 +20,6 @@ function ProductDetailPage({
   onClearCart,
 }: ProductDetailPageProps) {
   const { id } = useParams<{ id: string }>()
-  const navigate = useNavigate()
   const product = id && productsResult.status === 'success'
     ? productsResult.data.find((item) => item.id === id)
     : undefined
@@ -31,13 +30,9 @@ function ProductDetailPage({
         <div className="intro-copy">
           <p className="eyebrow"><span className="eyebrow-dot" /> La sélection du studio</p>
           <h1>{product ? <>{product.name}<em>.</em></> : <>Fiche <em>produit.</em></>}</h1>
-          <button
-            className="add-button detail-back-button"
-            type="button"
-            onClick={() => navigate('/products')}
-          >
+          <Link className="add-button detail-back-button" to="/products">
             ← Retour à la boutique
-          </button>
+          </Link>
         </div>
       </section>
       <div className="shop-layout">

@@ -13,13 +13,25 @@ function SiteHeader({ activePage, cartCount }: SiteHeaderProps) {
         maison moderne
       </Link>
       <nav className="main-nav" aria-label="Navigation principale">
-        <Link className={`nav-link${activePage === 'home' ? ' is-active' : ''}`} to="/">
+        <Link
+          className={`nav-link${activePage === 'home' ? ' is-active' : ''}`}
+          to="/"
+          aria-current={activePage === 'home' ? 'page' : undefined}
+        >
           Accueil
         </Link>
-        <Link className={`nav-link${activePage === 'products' ? ' is-active' : ''}`} to="/products">
+        <Link
+          className={`nav-link${activePage === 'products' ? ' is-active' : ''}`}
+          to="/products"
+          aria-current={activePage === 'products' ? 'page' : undefined}
+        >
           Boutique
         </Link>
-        <Link className={`nav-link${activePage === 'orders' ? ' is-active' : ''}`} to="/orders">
+        <Link
+          className={`nav-link${activePage === 'orders' ? ' is-active' : ''}`}
+          to="/orders"
+          aria-current={activePage === 'orders' ? 'page' : undefined}
+        >
           Commandes
         </Link>
       </nav>
